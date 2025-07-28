@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/LocalBusiness">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Pinnacle IT Solutions offers expert tech support, personalized training, and reliable custom PC services in Baltimore." />
+  <title>Pinnacle IT Solutions | Expert Tech Help in Baltimore</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0f1c23;
+      color: #fff;
+      scroll-behavior: smooth;
+      line-height: 1.6;
+    }
+
+    section, header {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 1rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 1.5rem;
+      background-color: #0f1c23;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav ul li a {
+  position: relative;
+  top: -100px; /* adjust to -2px or -3px if needed */
+}
+nav .logo {
+  display: flex;
+  align-items: flex-end; /* aligns them to the bottom */
+  top: -100px;
+  gap: 5px;
+}
+
+nav .logo img {
+  height: 80px;
+  position: relative;
+  top: -75px; /* tweak this to align with the text */
+}
+
+nav .logo span {
+  font-size: 1.5rem;
+  font-weight: 800;
+  position: relative;
+  top: -235px; /* tweak this as needed */
+}
+
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.3rem; 
+    }
+
+    .burger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .burger div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 4px 0;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+        background: #1a2b32;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        padding: 1rem;
+        border-radius: 8px;
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      .burger {
+        display: flex;
+      }
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(to right, #0f1c23, #1b2e38);
+    }
+
+    .hero-text {
+      flex: 1 1 400px;
+    }
+
+    .hero-text h1 span.typing {
+      border-right: 2px solid #fff;
+      animation: blink 0.7s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { border-color: transparent; }
+      50% { border-color: white; }
+    }
+
+    .hero-img {
+      flex: 1 1 300px;
+      text-align: center;
+    }
+
+    .hero-img img {
+      width: 100%;
+      max-width: 350px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #c0c0c0;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      background-color: #3db2c7;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      perspective: 1000px;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 250px;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+
+    .card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      background-color: #1a2b32;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      color: #ccc;
+    }
+
+    .card-front h3 {
+      color: #3db2c7;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-front ul {
+      padding-left: 1rem;
+      color: #ccc;
+    }
+
+    .benefits, .testimonials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    .testimonial-box {
+      background-color: #1a2b32;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      border-left: 4px solid #3db2c7;
+      display: none;
+      flex-direction: column;
+    }
+
+    .testimonial-box.active {
+      display: flex;
+    }
+
+    .testimonial-box strong {
+      margin-top: auto;
+      text-align: right;
+      color: #fff;
+    }
+
+    .stars {
+      color: gold;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .testimonial-controls {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .testimonial-controls button {
+  background: #3db2c7;
+  border: none;
+  padding: 1rem 2rem;
+  margin: 0 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.testimonial-controls button:hover {
+  background: #2aa5b5;
+}
+
+
+    .testimonial-controls button:hover {
+      background: #2aa5b5;
+    }
+
+    /* Animation & scroll reveal */
+    [data-animate] {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    [data-animate].visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #888;
+      background-color: #0f1c23;
+    }
+  </style>
+</head>
+
+<body itemscope itemtype="https://schema.org/LocalBusiness">
+  <nav>
+    <div class="logo">
+      <img src="assets/logo-removebg-preview.png" alt="Pinnacle IT Logo" style="height: 300px; vertical-align: middle; margin-right: 15px;">
+      <span itemprop="name">Pinnacle IT Solutions</span>
+    </div>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="burger" onclick="toggleMenu()">
+      <div></div><div></div><div></div>
+    </div>
+  </nav>
+
+  <header>
+    <div class="hero-text">
+      <h1 id="typing"></h1>
+      <p>Offering expert tech support, personalized training, and custom solutions — whether you game, work, or just need help with your devices.</p>
+      <a href="#services" class="btn">Learn More</a>
+    </div>
+    <div class="hero-img">
+      <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="Technician illustration">
+    </div>
+  </header>
+
+  <section id="services" data-animate>
+    <h2 class="section-title">Popular Services</h2>
+    <div class="services">
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="assets/computer.png" alt="Computer Services" style="width: 60px; margin-bottom: 10px;">
+            <h3>💻 Computer Services</h3>
+            <ul>
+              <li>Hard drive replacement</li>
+              <li>OS installation</li>
+              <li>Software repairs</li>
+              <li>Memory upgrades</li>
+            </ul>
+          </div>
+          <div class="card-back">
+            Speedy and affordable repairs to get your computer running like new.
+          </div>
+        </div>
+      </div>
+  
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="assets/console.png" alt="Console Services" style="width: 60px; margin-bottom: 10px;">
+            <h3>🎮 Console Services</h3>
+            <ul>
+              <li>PS5 & PS4 hard drive repairs</li>
+              <li>System cleanings</li>
+              <li>Fan & disk replacements</li>
+            </ul>
+          </div>
+          <div class="card-back">
+            Get your console back in the game — fast, clean, and cool.
+          </div>
+        </div>
+      </div>
+  
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="assets/personalized-support.png" alt="Personalized Training" style="width: 60px; margin-bottom: 10px;">
+            <h3>👨‍🏫 Personalized Training</h3>
+            <ul>
+              <li>One-on-one sessions</li>
+              <li>Software tutorials</li>
+              <li>Hands-on coaching</li>
+            </ul>
+          </div>
+          <div class="card-back">
+            Learn at your pace, with guidance tailored just for you.
+          </div>
+        </div>
+      </div>
+  
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="assets/custom.png" alt="Custom PC Builds" style="width: 60px; margin-bottom: 10px;">
+            <h3>🛠️ Custom PC Builds</h3>
+            <ul>
+              <li>Performance planning</li>
+              <li>Budget-based design</li>
+              <li>Build from scratch or list</li>
+            </ul>
+          </div>
+          <div class="card-back">
+            From gaming to editing, we build the perfect machine for your goals.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <section id="testimonials" data-animate>
+    <h2 class="section-title">Testimonials</h2>
+    <div class="testimonials" id="testimonial-container">
+      <!-- One box visible at a time -->
+      <div class="testimonial-box active">
+        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Avatar of Alexis J." style="width: 40px; border-radius: 50%; margin-bottom: 0.5rem;">
+        <div class="stars">★★★★★</div>
+        <p>"I had no idea what was wrong with my PC, but Pinnacle explained everything in plain English and fixed it same-day. Super helpful and transparent."</p>
+        <strong>– Alexis J.</strong>
+      </div>
+      <div class="testimonial-box">
+        <img src="https://cdn-icons-png.flaticon.com/512/236/236831.png" alt="Avatar of Dre K." style="width: 40px; border-radius: 50%; margin-bottom: 0.5rem;">
+        <div class="stars">★★★★★</div>
+        <p>"My PS5 was dead and I thought I’d need a new one — Pinnacle fixed it in under 2 hours. Saved me hundreds!"</p>
+        <strong>– Dre K.</strong>
+      </div>
+      <div class="testimonial-box">
+        <img src="https://cdn-icons-png.flaticon.com/512/2922/2922561.png" alt="Avatar of Janice R." style="width: 40px; border-radius: 50%; margin-bottom: 0.5rem;">
+        <div class="stars">★★★★★</div>
+        <p>"The 1-on-1 training sessions helped me go from zero to confident with my new laptop. Highly recommend for anyone overwhelmed by tech."</p>
+        <strong>– Janice R.</strong>
+      </div>
+      <div class="testimonial-box">
+        <img src="https://cdn-icons-png.flaticon.com/512/219/219983.png" alt="Avatar of Chris V." style="width: 40px; border-radius: 50%; margin-bottom: 0.5rem;">
+        <div class="stars">★★★★★</div>
+        <p>"They helped me plan a custom PC build for my video editing work — and I’m blown away by the performance. Great communication the whole way."</p>
+        <strong>– Chris V.</strong>
+      </div>
+    </div>
+    <div class="testimonial-controls">
+      <button onclick="prevTestimonial()">Prev</button>
+      <button onclick="nextTestimonial()">Next</button>
+    </div>
+  </section>
+  <section id="contact" data-animate>
+    <h2 class="section-title">Contact Us</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
+      
+     <!-- Contact Form -->
+     <form action="#" method="POST" style="
+     flex: 1 1 350px;
+     background-color: #1a2b32;
+     padding: 2rem;
+     border-radius: 12px;
+     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+     display: flex;
+     flex-direction: column;
+     gap: 1.25rem;
+   ">
+     <label for="name" style="font-size: 1rem;">Name</label>
+     <input type="text" id="name" name="name" required style="
+       width: 100%;
+       padding: 0.85rem;
+       border: none;
+       border-radius: 6px;
+       background-color: #0f1c23;
+       color: white;
+       font-size: 1rem;
+     ">
+   
+     <label for="email" style="font-size: 1rem;">Email</label>
+     <input type="email" id="email" name="email" required style="
+       width: 100%;
+       padding: 0.85rem;
+       border: none;
+       border-radius: 6px;
+       background-color: #0f1c23;
+       color: white;
+       font-size: 1rem;
+     ">
+   
+     <label for="subject" style="font-size: 1rem;">Subject</label>
+     <input type="text" id="subject" name="subject" required style="
+       width: 100%;
+       padding: 0.85rem;
+       border: none;
+       border-radius: 6px;
+       background-color: #0f1c23;
+       color: white;
+       font-size: 1rem;
+     ">
+   
+     <label for="message" style="font-size: 1rem;">Message</label>
+     <textarea id="message" name="message" rows="5" required style="
+       width: 100%;
+       padding: 0.85rem;
+       border: none;
+       border-radius: 6px;
+       background-color: #0f1c23;
+       color: white;
+       font-size: 1rem;
+       resize: vertical;
+     "></textarea>
+   
+     <button type="submit" style="
+       background-color: #3db2c7; 
+       color: white; 
+       padding: 0.85rem;
+       font-size: 1rem;
+       border: none;
+       border-radius: 6px;
+       font-weight: 600;
+       cursor: pointer;
+     ">
+       Send Message
+     </button>
+   </form>
+   
+  
+      <!-- Map -->
+      <div style="flex: 1 1 500px;">
+        <iframe 
+          src="https://www.google.com/maps?q=Baltimore,+MD&output=embed" 
+          width="100%" 
+          height="600" 
+          style="border:0; border-radius: 12px; margin-bottom: 1rem;" 
+          allowfullscreen 
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+  
+    <!-- Business Hours Below Both -->
+<div style="text-align: center; margin-top: 2rem;">
+    <div style="
+      display: block; 
+      max-width: 700px; 
+      margin: 0 auto; 
+      background-color: #1a2b32; 
+      padding: 2.5rem; 
+      border-radius: 12px; 
+      font-size: 1.3rem; 
+      color: #ccc;
+    ">
+      <p style="font-size: 1.6rem; color: #fff; font-weight: 700; margin-bottom: 1rem;">
+        Business Hours
+      </p>
+      <p>Mon–Fri: 9:00 AM – 6:00 PM</p>
+      <p>Sat: 10:00 AM – 4:00 PM</p>
+      <p>Sun: Closed</p>
+    </div>
+  </div>
+  
+  
+  </section>
+  
+  
+  
+  
+
+  <script>
+    // Burger menu toggle
+    function toggleMenu() {
+      const navLinks = document.querySelector('nav ul');
+      navLinks.classList.toggle('active');
+    }
+
+    // Scroll animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+
+    // Typing animation
+    const phrases = ["Your Local Partner in Reliable IT Solutions."];
+    let i = 0, j = 0, isDeleting = false;
+    const typingElement = document.getElementById("typing");
+
+    function type() {
+      const currentPhrase = phrases[i];
+      typingElement.innerHTML = currentPhrase.substring(0, j) + '<span class="typing"></span>';
+
+      if (!isDeleting && j < currentPhrase.length) {
+        j++;
+        setTimeout(type, 75);
+      } else if (isDeleting && j > 0) {
+        j--;
+        setTimeout(type, 50);
+      } else {
+        isDeleting = !isDeleting;
+        setTimeout(type, isDeleting ? 2000 : 500);
+      }
+    }
+
+    if (typingElement) type();
+
+    // Testimonial carousel
+    let currentTestimonial = 0;
+    const testimonials = document.querySelectorAll('.testimonial-box');
+
+    function showTestimonial(index) {
+      testimonials.forEach((t, i) => {
+        t.classList.toggle('active', i === index);
+      });
+    }
+
+    function nextTestimonial() {
+      currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+      showTestimonial(currentTestimonial);
+    }
+
+    function prevTestimonial() {
+      currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+      showTestimonial(currentTestimonial);
+    }
+  </script>
+
+<footer>
+    <div style="margin-bottom: 1rem;">
+      <a href="https://www.instagram.com/pinnacleitsolutions/?hl=en" target="blank" style="margin: 0 10px; color: #fff; font-size: 1.5rem;">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.facebook.com/YOUR_HANDLE" target="_blank" style="margin: 0 10px; color: #fff; font-size: 1.5rem;">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </div>
+    &copy; 2025 Pinnacle IT Solutions | (443) 768-0557 | info@pinnacleitsolutions.com
+  </footer>
+  
+</body>
+</html>
