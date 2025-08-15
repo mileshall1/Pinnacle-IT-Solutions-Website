@@ -404,161 +404,104 @@ nav .logo span {
   
 
   <section id="testimonials" data-animate>
-    <h2 class="section-title">Testimonials</h2>
-    <div class="testimonials" id="testimonial-container">
-      <!-- One box visible at a time -->
-      <div class="testimonial-box active">
-        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Avatar of Alexis J." style="width: 40px; border-radius: 50%; margin-bottom: 0.5rem;">
-        <div class="stars">★★★★★</div>
-        <p>"I am a person who needs a vocabulary that translates from the "jargon" to a language that makes sense to me. Jordon provides this element of my needs and this results in a more enjoyable use of technology."</p>
-        <strong>– Cecilia D.</strong>
-      </div>
-         <div class="testimonial-box">
-        <img src="https://cdn-icons-png.flaticon.com/512/236/236831.png" alt="Avatar of Dre K." style="width: 40px; border-radius: 50%; margin-bottom: 0.5rem;">
-        <div class="stars">★★★★★</div>
-        <p>"Maryland Roofing Exteriors couldn't be more grateful for Jordon's expertise! From programming to business cards and forms, he handled all our computer needs flawlessly."</p>
-        <strong>– Kathy C. - Maryland Roofing Exteriors</strong>
-      </div>
-      <div class="testimonial-box">
-        <img src="https://cdn-icons-png.flaticon.com/512/236/236831.png" alt="Avatar of Dre K." style="width: 40px; border-radius: 50%; margin-bottom: 0.5rem;">
-        <div class="stars">★★★★★</div>
-        <p>"I've used Pinnacle a few times now and the service has been great! Jordon has helped with gaming PC upgrades and cleaning out my Playstation a number of times. They're quick and it's a more personal experience!"</p>
-        <strong>– Tahji M.</strong>
-      </div>
-      <div class="testimonial-box">
-        <img src="https://cdn-icons-png.flaticon.com/512/2922/2922561.png" alt="Avatar of Janice R." style="width: 40px; border-radius: 50%; margin-bottom: 0.5rem;">
-        <div class="stars">★★★★★</div>
-        <p>"From my experience over the past three years, Jordon has provided professional and proficient IT services. He gives great value for his fees and I have confidently referred others to him for his service."</p>
-        <strong>– Michele D.</strong>
-      </div>
-      <div class="testimonial-box">
-        <img src="https://cdn-icons-png.flaticon.com/512/219/219983.png" alt="Avatar of Chris V." style="width: 40px; border-radius: 50%; margin-bottom: 0.5rem;">
-        <div class="stars">★★★★★</div>
-        <p>"Jordon has been an excellent and affordable source of help with our home computer and video game systems! Pinnacle is our family's IT "go to"!"</p>
-        <strong>– Judy</strong>
-      </div>
+  <h2 class="section-title">Testimonials</h2>
+  <div class="testimonials" id="testimonial-container">
+    
+    <div class="testimonial-box active" data-icon="https://cdn-icons-png.flaticon.com/512/2922/2922656.png">
+  <img src="" alt="Avatar of Cecilia D." style="width: 40px; border-radius:50%; margin-bottom:0.5rem;">
+  <div class="stars" style="color:gold;">★★★★★</div>
+  <p>"I am a person who needs a vocabulary that translates from the &quot;jargon&quot; to a language that makes sense to me. Jordon provides this element of my needs and this results in a more enjoyable use of technology."</p>
+  <strong>– Cecilia D.</strong>
+</div>
+
+ <div class="testimonial-box" data-icon="https://cdn-icons-png.flaticon.com/512/2922/2922565.png">
+  <img src="" alt="Avatar of Kathy C." style="width: 50px; border-radius: 50%; margin-bottom: 0.5rem;">
+  <div class="stars" style="color: gold;">★★★★★</div>
+  <p>"Maryland Roofing Exteriors couldn't be more grateful for Jordon's expertise! From programming to business cards and forms, he handled all our computer needs flawlessly."</p>
+  <strong>– Kathy C., Maryland Roofing Exteriors</strong>
+</div>
+
+
+
+    <div class="testimonial-box" data-gender="male" data-icon="https://cdn-icons-png.flaticon.com/512/219/219970.png">
+      <img src="" alt="Avatar of Tahji M." style="width: 40px; border-radius: 50%; margin-bottom: 0.5rem;">
+      <div class="stars">★★★★★</div>
+      <p>"I've used Pinnacle a few times now and the service has been great! Jordon has helped with gaming PC upgrades and cleaning out my Playstation a number of times. They're quick and it's a more personal experience!"</p>
+      <strong>– Tahji M.</strong>
     </div>
-    <div class="testimonial-controls">
-      <button onclick="prevTestimonial()">Prev</button>
-      <button onclick="nextTestimonial()">Next</button>
+
+    <div class="testimonial-box" data-gender="female" data-icon="https://cdn-icons-png.flaticon.com/512/2922/2922510.png">
+      <img src="" alt="Avatar of Michele D." style="width: 40px; border-radius: 50%; margin-bottom: 0.5rem;">
+      <div class="stars">★★★★★</div>
+      <p>"From my experience over the past three years, Jordon has provided professional and proficient IT services. He gives great value for his fees and I have confidently referred others to him for his service."</p>
+      <strong>– Michele D.</strong>
     </div>
-  </section>
-  <section id="contact" data-animate>
-    <h2 class="section-title">Contact Us</h2>
-    <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
+
+    <div class="testimonial-box" data-gender="female" data-icon="https://cdn-icons-png.flaticon.com/512/2922/2922688.png">
+      <img src="" alt="Avatar of Judy" style="width: 40px; border-radius: 50%; margin-bottom: 0.5rem;">
+      <div class="stars">★★★★★</div>
+      <p>"Jordon has been an excellent and affordable source of help with our home computer and video game systems! Pinnacle is our family's IT &quot;go to&quot;!"</p>
+      <strong>– Judy</strong>
+    </div>
+
+  </div>
+
+  <div class="testimonial-controls">
+    <button onclick="prevTestimonial()">Prev</button>
+    <button onclick="nextTestimonial()">Next</button>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll("#testimonial-container .testimonial-box").forEach(box => {
+    const img = box.querySelector("img");
+    img.src = box.getAttribute("data-icon");
+  });
+</script>
+
       
-    <!-- Contact Form -->
-<form action="https://formspree.io/f/{form_id}" method="POST" style="
-  flex: 1 1 350px;
-  background-color: #1a2b32;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-">
-  <label for="name" style="font-size: 1rem;">Name</label>
-  <input type="text" id="name" name="name" required style="
-    width: 100%;
-    padding: 0.85rem;
-    border: none;
-    border-radius: 6px;
-    background-color: #0f1c23;
-    color: white;
-    font-size: 1rem;
-  ">
+    <section id="contact" data-animate style="padding:3rem 1rem; background:#0f1c23; color:#fff;">
+  <h2 class="section-title" style="text-align:center;">Contact Us</h2>
 
-  <label for="email" style="font-size: 1rem;">Email</label>
-  <input type="email" id="email" name="Email" required style="
-    width: 100%;
-    padding: 0.85rem;
-    border: none;
-    border-radius: 6px;
-    background-color: #0f1c23;
-    color: white;
-    font-size: 1rem;
-  ">
+  <div style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center; align-items:stretch; margin-top:2rem;">
+    <form action="https://formspree.io/f/xldlvvye" method="POST" style="flex:1 1 420px; max-width:520px; background:#1a2b32; padding:2rem; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,.2); display:flex; flex-direction:column; gap:1.25rem;">
+      <label for="name" style="font-size:1rem;">Name</label>
+      <input type="text" id="name" name="name" required style="width:100%; padding:.85rem; border:none; border-radius:6px; background:#0f1c23; color:#fff; font-size:1rem;">
 
-  <label for="subject" style="font-size: 1rem;">Subject</label>
-  <input type="text" id="subject" name="subject" required style="
-    width: 100%;
-    padding: 0.85rem;
-    border: none;
-    border-radius: 6px;
-    background-color: #0f1c23;
-    color: white;
-    font-size: 1rem;
-  ">
+      <label for="email" style="font-size:1rem;">Email</label>
+      <input type="email" id="email" name="Email" required style="width:100%; padding:.85rem; border:none; border-radius:6px; background:#0f1c23; color:#fff; font-size:1rem;">
 
-  <label for="message" style="font-size: 1rem;">Message</label>
-  <textarea id="message" name="message" rows="5" required style="
-    width: 100%;
-    padding: 0.85rem;
-    border: none;
-    border-radius: 6px;
-    background-color: #0f1c23;
-    color: white;
-    font-size: 1rem;
-    resize: vertical;
-  "></textarea>
+      <label for="subject" style="font-size:1rem;">Subject</label>
+      <input type="text" id="subject" name="subject" required style="width:100%; padding:.85rem; border:none; border-radius:6px; background:#0f1c23; color:#fff; font-size:1rem;">
 
-  <button type="submit" style="
-    background-color: #3db2c7; 
-    color: white; 
-    padding: 0.85rem;
-    font-size: 1rem;
-    border: none;
-    border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
-  ">
-    Send Message
-  </button>
-</form>
+      <label for="message" style="font-size:1rem;">Message</label>
+      <textarea id="message" name="message" rows="5" required style="width:100%; padding:.85rem; border:none; border-radius:6px; background:#0f1c23; color:#fff; font-size:1rem; resize:vertical;"></textarea>
 
-   
-  
-      <!-- Map -->
-      <div style="flex: 1 1 500px;">
-        <iframe 
-          src="https://www.google.com/maps?q=Baltimore,+MD&output=embed" 
-          width="100%" 
-          height="600" 
-          style="border:0; border-radius: 12px; margin-bottom: 1rem;" 
-          allowfullscreen 
-          loading="lazy"
-        ></iframe>
-      </div>
+      <button type="submit" style="background:#3db2c7; color:#fff; padding:.85rem; font-size:1rem; border:none; border-radius:6px; font-weight:600; cursor:pointer;">Send Message</button>
+    </form>
+
+    <div style="flex:1 1 520px; max-width:620px;">
+      <iframe
+        src="https://www.google.com/maps?q=Baltimore,+MD&output=embed"
+        width="100%"
+        height="100%"
+        style="border:0; border-radius:12px; min-height:520px;"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
     </div>
-  
-    <!-- Business Hours Below Both -->
-<div style="text-align: center; margin-top: 2rem;">
-    <div style="
-      display: block; 
-      max-width: 700px; 
-      margin: 0 auto; 
-      background-color: #1a2b32; 
-      padding: 2.5rem; 
-      border-radius: 12px; 
-      font-size: 1.3rem; 
-      color: #ccc;
-    ">
-      <p style="font-size: 1.6rem; color: #fff; font-weight: 700; margin-bottom: 1rem;">
-        Business Hours
-      </p>
+  </div>
+
+  <div style="text-align:center; margin-top:2rem;">
+    <div style="display:inline-block; max-width:700px; background:#1a2b32; padding:2.5rem; border-radius:12px; font-size:1.3rem; color:#ccc;">
+      <p style="font-size:1.6rem; color:#fff; font-weight:700; margin-bottom:1rem;">Business Hours</p>
       <p>Mon–Fri: 9:00 AM – 6:00 PM</p>
       <p>Sat: 10:00 AM – 4:00 PM</p>
       <p>Sun: Closed</p>
     </div>
   </div>
-  
-  
-  </section>
-  
-  
-  
-  
+</section>
+
 
   <script>
     // Burger menu toggle
