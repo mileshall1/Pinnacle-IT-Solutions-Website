@@ -39,10 +39,6 @@
     nav.shrink .logo img{height:68px}
     nav .logo span{font-size:1.25rem;font-weight:800;transition:font-size .25s ease}
     nav.shrink .logo span{font-size:1rem}
-    /* optional visual boost if PNG has transparent padding */
-    /* nav .logo img{transform:scale(1.12);transform-origin:left center}
-       nav.shrink .logo img{transform:scale(1.06)} */
-
     nav ul{list-style:none;display:flex;gap:1.25rem;align-items:center}
     nav a{color:#fff;text-decoration:none;font-weight:600;font-size:1rem}
     .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:transparent;border:none}
@@ -70,6 +66,9 @@
     .card-back{transform:rotateY(180deg);color:#ccc}
     .card-front h3{color:#3db2c7;margin-bottom:.5rem}
     .card-front ul{padding-left:1rem;color:#ccc}
+    /* inline icon + title */
+    .service-header{display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem}
+    .service-icon{width:32px;height:32px;object-fit:contain}
 
     /* TESTIMONIALS */
     #testimonials .wrap{max-width:760px;margin:0 auto;position:relative;min-height:260px}
@@ -102,6 +101,12 @@
     /* Respect reduced motion */
     @media (prefers-reduced-motion:reduce){
       *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+      .card:hover .card-inner{transform:none}
+    }
+
+    /* Turn off flip on touch devices (no hover) */
+    @media (hover:none) and (pointer:coarse){
+      .card:hover .card-inner{transform:none}
     }
 
     /* Responsive tweaks */
@@ -112,15 +117,42 @@
       .burger{display:flex}
       header{gap:1.25rem}
       .hero-img img{max-width:300px}
-      /* Mobile logo sizes */
+      /* Mobile logo sizes (base) */
       nav .logo img{height:68px}
       nav.shrink .logo img{height:56px}
       .testimonial-controls button{width:46%}
     }
     @media (max-width:480px){
-      h1{font-size:1.8rem}
-      .btn{width:100%;text-align:center}
-      .hero-img img{max-width:240px}
+      .service-icon{width:28px;height:28px}
+    }
+
+    /* --- Mobile polish overrides (last so they win) --- */
+    @media (max-width: 480px) {
+      nav { padding: .6rem .9rem; }
+      nav .logo img { height: 84px; }
+      nav.shrink .logo img { height: 66px; }
+      nav ul { top: calc(100% + 8px); right: 10px; }
+
+      #typing { min-height: 2.8rem; line-height: 1.25; }
+      .hero-img img { max-width: 280px; margin-top: .5rem; }
+
+      .services { gap: 1.25rem; }
+      .card-inner { height: 220px; }
+
+      #testimonials .testimonial-controls{
+        display:flex;justify-content:center;gap:12px;padding:0 .75rem;
+      }
+      #testimonials .testimonial-controls button{
+        flex:1 1 0;width:auto;padding:1rem;margin:0;
+      }
+    }
+    @media (max-width: 360px) {
+      nav .logo img { height: 90px; }
+      nav.shrink .logo img { height: 72px; }
+      #testimonials .testimonial-controls{
+        flex-direction:column;gap:10px;
+      }
+      #testimonials .testimonial-controls button{ width:100%; }
     }
   </style>
 </head>
@@ -128,7 +160,6 @@
 <body itemscope itemtype="https://schema.org/LocalBusiness">
   <nav role="navigation">
     <div class="logo">
-      <!-- Use a 2x image if available for crispness -->
       <img src="assets/logo-removebg-preview.png" alt="Pinnacle IT Logo" loading="eager">
       <span itemprop="name">Pinnacle IT Solutions</span>
     </div>
@@ -155,14 +186,18 @@
     </div>
   </header>
 
+  <!-- SERVICES (no standalone emojis; inline icons + titles) -->
   <section id="services" data-animate>
     <h2 class="section-title">Popular Services</h2>
     <div class="services">
+      <!-- Computer Services -->
       <div class="card">
         <div class="card-inner">
           <div class="card-front">
-            <img src="assets/computer.png" alt="Computer Services" width="60" height="60" loading="lazy" style="margin-bottom:10px">
-            <h3>💻 Computer Services</h3>
+            <div class="service-header">
+              <img class="service-icon" src="assets/computer.png" alt="Computer services icon" loading="lazy">
+              <h3>Computer Services</h3>
+            </div>
             <ul>
               <li>Hard drive replacement</li>
               <li>OS installation</li>
@@ -170,52 +205,69 @@
               <li>Memory upgrades</li>
             </ul>
           </div>
-          <div class="card-back">Speedy and affordable repairs to get your computer running like new.</div>
+          <div class="card-back">
+            Speedy and affordable repairs to get your computer running like new.
+          </div>
         </div>
       </div>
 
+      <!-- Console Services -->
       <div class="card">
         <div class="card-inner">
           <div class="card-front">
-            <img src="assets/console.png" alt="Console Services" width="60" height="60" loading="lazy" style="margin-bottom:10px">
-            <h3>🎮 Console Services</h3>
+            <div class="service-header">
+              <img class="service-icon" src="assets/console.png" alt="Console services icon" loading="lazy">
+              <h3>Console Services</h3>
+            </div>
             <ul>
-              <li>PS5 & PS4 hard drive repairs</li>
+              <li>PS5 &amp; PS4 hard drive repairs</li>
               <li>System cleanings</li>
-              <li>Fan & disk replacements</li>
+              <li>Fan &amp; disk replacements</li>
             </ul>
           </div>
-          <div class="card-back">Get your console back in the game — fast, clean, and cool.</div>
+          <div class="card-back">
+            Get your console back in the game — fast, clean, and cool.
+          </div>
         </div>
       </div>
 
+      <!-- Personalized Training -->
       <div class="card">
         <div class="card-inner">
           <div class="card-front">
-            <img src="assets/personalized-support.png" alt="Personalized Training" width="60" height="60" loading="lazy" style="margin-bottom:10px">
-            <h3>👨‍🏫 Personalized Training</h3>
+            <div class="service-header">
+              <img class="service-icon" src="assets/personalized-support.png" alt="Training icon" loading="lazy">
+              <h3>Personalized Training</h3>
+            </div>
             <ul>
               <li>One-on-one sessions</li>
               <li>Software tutorials</li>
               <li>Hands-on coaching</li>
             </ul>
           </div>
-          <div class="card-back">Learn at your pace, with guidance tailored just for you.</div>
+          <div class="card-back">
+            Learn at your pace, with guidance tailored just for you.
+          </div>
         </div>
       </div>
 
+      <!-- Custom PC Builds -->
       <div class="card">
         <div class="card-inner">
           <div class="card-front">
-            <img src="assets/custom.png" alt="Custom PC Builds" width="60" height="60" loading="lazy" style="margin-bottom:10px">
-            <h3>🛠️ Custom PC Builds</h3>
+            <div class="service-header">
+              <img class="service-icon" src="assets/custom.png" alt="Custom PC icon" loading="lazy">
+              <h3>Custom PC Builds</h3>
+            </div>
             <ul>
               <li>Performance planning</li>
               <li>Budget-based design</li>
               <li>Build from scratch or list</li>
             </ul>
           </div>
-          <div class="card-back">From gaming to editing, we build the perfect machine for your goals.</div>
+          <div class="card-back">
+            From gaming to editing, we build the perfect machine for your goals.
+          </div>
         </div>
       </div>
     </div>
