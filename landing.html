@@ -1,320 +1,147 @@
 <!DOCTYPE html>
 <html lang="en" itemscope itemtype="http://schema.org/LocalBusiness">
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Icons & Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Pinnacle IT Solutions offers expert tech support, personalized training, and reliable custom PC services in Baltimore." />
   <title>Pinnacle IT Solutions | Expert Tech Help in Baltimore</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Open Graph (update URL/image when you have them) -->
+  <meta property="og:title" content="Pinnacle IT Solutions | Expert Tech Help in Baltimore">
+  <meta property="og:description" content="Expert tech support, personalized training, and custom PC services in Baltimore.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://your-domain.com/">
+  <meta property="og:image" content="https://your-domain.com/assets/og-image.jpg">
+  <link rel="canonical" href="https://your-domain.com/">
+
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    :root{scroll-padding-top:96px}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;background:#0f1c23;color:#fff;line-height:1.6}
+
+    section,header{max-width:1200px;margin:0 auto;padding:4rem 1rem}
+    section{scroll-margin-top:96px}
+
+    /* NAV */
+    nav{display:flex;justify-content:space-between;align-items:center;padding:.75rem 1rem;background:rgba(15,28,35,1);position:sticky;top:0;z-index:1000;transition:padding .25s ease,background .25s ease,box-shadow .25s ease,transform .25s ease}
+    nav.shrink{padding:.35rem .75rem;background:rgba(15,28,35,.9);box-shadow:0 6px 20px rgba(0,0,0,.25);backdrop-filter:blur(8px)}
+    nav.hide{transform:translateY(-100%)}
+    nav .logo{display:flex;align-items:center;gap:.6rem}
+    /* BIGGER LOGO + shrink sizes */
+    nav .logo img{height:88px;width:auto;display:block;transition:height .25s ease, transform .25s ease}
+    nav.shrink .logo img{height:68px}
+    nav .logo span{font-size:1.25rem;font-weight:800;transition:font-size .25s ease}
+    nav.shrink .logo span{font-size:1rem}
+    /* optional visual boost if PNG has transparent padding */
+    /* nav .logo img{transform:scale(1.12);transform-origin:left center}
+       nav.shrink .logo img{transform:scale(1.06)} */
+
+    nav ul{list-style:none;display:flex;gap:1.25rem;align-items:center}
+    nav a{color:#fff;text-decoration:none;font-weight:600;font-size:1rem}
+    .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:transparent;border:none}
+    .burger div{width:26px;height:3px;background:#fff;border-radius:2px}
+
+    /* HERO */
+    header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;background:linear-gradient(to right,#0f1c23,#1b2e38);gap:2rem}
+    .hero-text{flex:1 1 420px}
+    .hero-img{flex:1 1 320px;text-align:center}
+    .hero-img img{width:100%;max-width:350px;height:auto}
+    h1{font-size:2.4rem;font-weight:800;margin-bottom:1rem}
+    .hero-text h1 span.typing{border-right:2px solid #fff;animation:blink .7s infinite}
+    @keyframes blink{0%,100%{border-color:transparent}50%{border-color:#fff}}
+    p{font-size:1rem;color:#c0c0c0;margin-bottom:1.5rem}
+    .btn{background:#3db2c7;color:#fff;padding:.75rem 1.25rem;border:none;border-radius:6px;cursor:pointer;font-weight:600}
+
+    .section-title{font-size:2rem;font-weight:700;text-align:center;margin-bottom:2rem}
+
+    /* SERVICES */
+    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem}
+    .card{perspective:1000px}
+    .card-inner{position:relative;width:100%;height:250px;transition:transform .8s;transform-style:preserve-3d}
+    .card:hover .card-inner{transform:rotateY(180deg)}
+    .card-front,.card-back{position:absolute;inset:0;backface-visibility:hidden;background:#1a2b32;border-radius:12px;padding:1.5rem;box-shadow:0 2px 10px rgba(0,0,0,.2)}
+    .card-back{transform:rotateY(180deg);color:#ccc}
+    .card-front h3{color:#3db2c7;margin-bottom:.5rem}
+    .card-front ul{padding-left:1rem;color:#ccc}
+
+    /* TESTIMONIALS */
+    #testimonials .wrap{max-width:760px;margin:0 auto;position:relative;min-height:260px}
+    .testimonial-box{background:#1a2b32;padding:1.5rem;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.2);border-left:4px solid #3db2c7;display:flex;flex-direction:column;align-items:flex-start;position:absolute;left:-9999px;opacity:0;transform:translateY(6px);transition:opacity .35s ease, transform .35s ease}
+    .testimonial-box.active{position:relative;left:auto;opacity:1;transform:translateY(0)}
+    .testimonial-box strong{margin-top:auto;text-align:right;color:#fff}
+    .stars{color:gold;font-size:1.1rem;margin-bottom:.5rem}
+    .testimonial-controls{text-align:center;margin-top:1rem}
+    .testimonial-controls button{background:#3db2c7;border:none;padding:.8rem 1.4rem;margin:0 .5rem;font-size:1rem;font-weight:600;color:#fff;border-radius:8px;cursor:pointer}
+    .testimonial-controls button:hover{background:#2aa5b5}
+
+    /* CONTACT */
+    .contact-flex{display:flex;flex-wrap:wrap;gap:2rem;justify-content:center;align-items:stretch;margin-top:2rem}
+    .contact-form{flex:1 1 420px;max-width:520px;background:#1a2b32;padding:2rem;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.2);display:flex;flex-direction:column;gap:1.25rem}
+    .contact-form input,.contact-form textarea{width:100%;padding:.85rem;border:none;border-radius:6px;background:#0f1c23;color:#fff;font-size:1rem}
+    .contact-form button{background:#3db2c7;color:#fff;padding:.9rem;font-size:1rem;border:none;border-radius:8px;font-weight:600;cursor:pointer}
+    .map-wrap{flex:1 1 520px;max-width:620px}
+    .map-wrap iframe{border:0;border-radius:12px;min-height:420px;width:100%;height:100%}
+
+    /* Reveal on scroll */
+    [data-animate]{opacity:0;transform:translateY(20px);transition:opacity .6s ease, transform .6s ease}
+    [data-animate].visible{opacity:1;transform:translateY(0)}
+
+    /* Footer */
+    footer{text-align:center;padding:2rem;font-size:.95rem;color:#888;background:#0f1c23}
+
+    /* Focus styles for accessibility */
+    :focus-visible{outline:2px solid #3db2c7;outline-offset:2px}
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion:reduce){
+      *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
     }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #0f1c23;
-      color: #fff;
-      scroll-behavior: smooth;
-      line-height: 1.6;
+    /* Responsive tweaks */
+    @media (max-width:1024px){h1{font-size:2.1rem}}
+    @media (max-width:768px){
+      nav ul{display:none;flex-direction:column;gap:1rem;background:#1a2b32;position:absolute;top:calc(100% + 8px);right:12px;padding:1rem;border-radius:8px;min-width:200px}
+      nav ul.active{display:flex}
+      .burger{display:flex}
+      header{gap:1.25rem}
+      .hero-img img{max-width:300px}
+      /* Mobile logo sizes */
+      nav .logo img{height:68px}
+      nav.shrink .logo img{height:56px}
+      .testimonial-controls button{width:46%}
     }
-
-    section, header {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 4rem 1rem;
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.5rem 1.5rem;
-      background-color: #0f1c23;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    nav ul li a {
-  position: relative;
-  top: -100px; /* adjust to -2px or -3px if needed */
-}
-nav .logo {
-  display: flex;
-  align-items: flex-end; /* aligns them to the bottom */
-  top: -100px;
-  gap: 5px;
-}
-
-nav .logo img {
-  height: 80px;
-  position: relative;
-  top: -75px; /* tweak this to align with the text */
-}
-
-nav .logo span {
-  font-size: 1.5rem;
-  font-weight: 800;
-  position: relative;
-  top: -235px; /* tweak this as needed */
-}
-
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.3rem; 
-    }
-
-    .burger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
-
-    .burger div {
-      width: 25px;
-      height: 3px;
-      background-color: white;
-      margin: 4px 0;
-    }
-
-    @media (max-width: 768px) {
-      nav ul {
-        display: none;
-        flex-direction: column;
-        gap: 1rem;
-        background: #1a2b32;
-        position: absolute;
-        top: 70px;
-        right: 20px;
-        padding: 1rem;
-        border-radius: 8px;
-      }
-
-      nav ul.active {
-        display: flex;
-      }
-
-      .burger {
-        display: flex;
-      }
-    }
-
-    header {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      background: linear-gradient(to right, #0f1c23, #1b2e38);
-    }
-
-    .hero-text {
-      flex: 1 1 400px;
-    }
-
-    .hero-text h1 span.typing {
-      border-right: 2px solid #fff;
-      animation: blink 0.7s infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { border-color: transparent; }
-      50% { border-color: white; }
-    }
-
-    .hero-img {
-      flex: 1 1 300px;
-      text-align: center;
-    }
-
-    .hero-img img {
-      width: 100%;
-      max-width: 350px;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-    }
-
-    p {
-      font-size: 1rem;
-      color: #c0c0c0;
-      margin-bottom: 1.5rem;
-    }
-
-    .btn {
-      background-color: #3db2c7;
-      color: #fff;
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 600;
-    }
-    .section-title {
-      font-size: 2rem;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 2rem;
-    }
-
-    .card {
-      perspective: 1000px;
-    }
-
-    .card-inner {
-      position: relative;
-      width: 100%;
-      height: 250px;
-      transition: transform 0.8s;
-      transform-style: preserve-3d;
-    }
-
-    .card:hover .card-inner {
-      transform: rotateY(180deg);
-    }
-
-    .card-front, .card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      background-color: #1a2b32;
-      border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .card-back {
-      transform: rotateY(180deg);
-      color: #ccc;
-    }
-
-    .card-front h3 {
-      color: #3db2c7;
-      margin-bottom: 0.5rem;
-    }
-
-    .card-front ul {
-      padding-left: 1rem;
-      color: #ccc;
-    }
-
-    .benefits, .testimonials {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 2rem;
-    }
-
-    .testimonial-box {
-      background-color: #1a2b32;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-      border-left: 4px solid #3db2c7;
-      display: none;
-      flex-direction: column;
-    }
-
-    .testimonial-box.active {
-      display: flex;
-    }
-
-    .testimonial-box strong {
-      margin-top: auto;
-      text-align: right;
-      color: #fff;
-    }
-
-    .stars {
-      color: gold;
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .testimonial-controls {
-      text-align: center;
-      margin-top: 1rem;
-    }
-
-    .testimonial-controls button {
-  background: #3db2c7;
-  border: none;
-  padding: 1rem 2rem;
-  margin: 0 1rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.testimonial-controls button:hover {
-  background: #2aa5b5;
-}
-
-
-    .testimonial-controls button:hover {
-      background: #2aa5b5;
-    }
-
-    /* Animation & scroll reveal */
-    [data-animate] {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    [data-animate].visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #888;
-      background-color: #0f1c23;
+    @media (max-width:480px){
+      h1{font-size:1.8rem}
+      .btn{width:100%;text-align:center}
+      .hero-img img{max-width:240px}
     }
   </style>
 </head>
 
 <body itemscope itemtype="https://schema.org/LocalBusiness">
-  <nav>
+  <nav role="navigation">
     <div class="logo">
-      <img src="assets/logo-removebg-preview.png" alt="Pinnacle IT Logo" style="height: 300px; vertical-align: middle; margin-right: 15px;">
+      <!-- Use a 2x image if available for crispness -->
+      <img src="assets/logo-removebg-preview.png" alt="Pinnacle IT Logo" loading="eager">
       <span itemprop="name">Pinnacle IT Solutions</span>
     </div>
-    <ul>
+
+    <ul id="primary-nav">
       <li><a href="#services">Services</a></li>
       <li><a href="#testimonials">Testimonials</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <div class="burger" onclick="toggleMenu()">
+
+    <button class="burger" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
       <div></div><div></div><div></div>
-    </div>
+    </button>
   </nav>
 
   <header>
@@ -324,7 +151,7 @@ nav .logo span {
       <a href="#services" class="btn">Learn More</a>
     </div>
     <div class="hero-img">
-      <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="Technician illustration">
+      <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="Technician illustration" width="350" height="350" loading="lazy">
     </div>
   </header>
 
@@ -334,7 +161,7 @@ nav .logo span {
       <div class="card">
         <div class="card-inner">
           <div class="card-front">
-            <img src="assets/computer.png" alt="Computer Services" style="width: 60px; margin-bottom: 10px;">
+            <img src="assets/computer.png" alt="Computer Services" width="60" height="60" loading="lazy" style="margin-bottom:10px">
             <h3>💻 Computer Services</h3>
             <ul>
               <li>Hard drive replacement</li>
@@ -343,16 +170,14 @@ nav .logo span {
               <li>Memory upgrades</li>
             </ul>
           </div>
-          <div class="card-back">
-            Speedy and affordable repairs to get your computer running like new.
-          </div>
+          <div class="card-back">Speedy and affordable repairs to get your computer running like new.</div>
         </div>
       </div>
-  
+
       <div class="card">
         <div class="card-inner">
           <div class="card-front">
-            <img src="assets/console.png" alt="Console Services" style="width: 60px; margin-bottom: 10px;">
+            <img src="assets/console.png" alt="Console Services" width="60" height="60" loading="lazy" style="margin-bottom:10px">
             <h3>🎮 Console Services</h3>
             <ul>
               <li>PS5 & PS4 hard drive repairs</li>
@@ -360,16 +185,14 @@ nav .logo span {
               <li>Fan & disk replacements</li>
             </ul>
           </div>
-          <div class="card-back">
-            Get your console back in the game — fast, clean, and cool.
-          </div>
+          <div class="card-back">Get your console back in the game — fast, clean, and cool.</div>
         </div>
       </div>
-  
+
       <div class="card">
         <div class="card-inner">
           <div class="card-front">
-            <img src="assets/personalized-support.png" alt="Personalized Training" style="width: 60px; margin-bottom: 10px;">
+            <img src="assets/personalized-support.png" alt="Personalized Training" width="60" height="60" loading="lazy" style="margin-bottom:10px">
             <h3>👨‍🏫 Personalized Training</h3>
             <ul>
               <li>One-on-one sessions</li>
@@ -377,16 +200,14 @@ nav .logo span {
               <li>Hands-on coaching</li>
             </ul>
           </div>
-          <div class="card-back">
-            Learn at your pace, with guidance tailored just for you.
-          </div>
+          <div class="card-back">Learn at your pace, with guidance tailored just for you.</div>
         </div>
       </div>
-  
+
       <div class="card">
         <div class="card-inner">
           <div class="card-front">
-            <img src="assets/custom.png" alt="Custom PC Builds" style="width: 60px; margin-bottom: 10px;">
+            <img src="assets/custom.png" alt="Custom PC Builds" width="60" height="60" loading="lazy" style="margin-bottom:10px">
             <h3>🛠️ Custom PC Builds</h3>
             <ul>
               <li>Performance planning</li>
@@ -394,188 +215,210 @@ nav .logo span {
               <li>Build from scratch or list</li>
             </ul>
           </div>
-          <div class="card-back">
-            From gaming to editing, we build the perfect machine for your goals.
-          </div>
+          <div class="card-back">From gaming to editing, we build the perfect machine for your goals.</div>
         </div>
       </div>
     </div>
   </section>
-  
 
   <section id="testimonials" data-animate>
-  <h2 class="section-title">Testimonials</h2>
-  <div class="testimonials" id="testimonial-container">
-    
-    <div class="testimonial-box active" data-icon="https://cdn-icons-png.flaticon.com/512/2922/2922656.png">
-  <img src="" alt="Avatar of Cecilia D." style="width: 40px; border-radius:50%; margin-bottom:0.5rem;">
-  <div class="stars" style="color:gold;">★★★★★</div>
-  <p>"I am a person who needs a vocabulary that translates from the &quot;jargon&quot; to a language that makes sense to me. Jordon provides this element of my needs and this results in a more enjoyable use of technology."</p>
-  <strong>– Cecilia D.</strong>
-</div>
+    <h2 class="section-title">Testimonials</h2>
+    <div class="wrap" id="testimonial-container">
+      <!-- Cecilia -->
+      <div class="testimonial-box active" data-icon="https://cdn-icons-png.flaticon.com/512/2922/2922656.png">
+        <img src="" alt="Avatar of Cecilia D." width="60" height="60" loading="lazy" style="border-radius:50%;margin-bottom:1rem">
+        <div class="stars">★★★★★</div>
+        <p>"I am a person who needs a vocabulary that translates from the &quot;jargon&quot; to a language that makes sense to me. Jordon provides this element of my needs and this results in a more enjoyable use of technology."</p>
+        <strong>– Cecilia D.</strong>
+      </div>
+      <!-- Kathy -->
+      <div class="testimonial-box" data-icon="https://cdn-icons-png.flaticon.com/512/2922/2922565.png">
+        <img src="" alt="Avatar of Kathy C." width="60" height="60" loading="lazy" style="border-radius:50%;margin-bottom:1rem">
+        <div class="stars">★★★★★</div>
+        <p>"Maryland Roofing Exteriors couldn't be more grateful for Jordon's expertise! From programming to business cards and forms, he handled all our computer needs flawlessly."</p>
+        <strong>– Kathy C., Maryland Roofing Exteriors</strong>
+      </div>
+      <!-- Tahji -->
+      <div class="testimonial-box" data-icon="https://cdn-icons-png.flaticon.com/512/219/219970.png">
+        <img src="" alt="Avatar of Tahji M." width="60" height="60" loading="lazy" style="border-radius:50%;margin-bottom:1rem">
+        <div class="stars">★★★★★</div>
+        <p>"I've used Pinnacle a few times now and the service has been great! Jordon has helped with gaming PC upgrades and cleaning out my Playstation a number of times. They're quick and it's a more personal experience!"</p>
+        <strong>– Tahji M.</strong>
+      </div>
+      <!-- Michele -->
+      <div class="testimonial-box" data-icon="https://cdn-icons-png.flaticon.com/512/2922/2922510.png">
+        <img src="" alt="Avatar of Michele D." width="60" height="60" loading="lazy" style="border-radius:50%;margin-bottom:1rem">
+        <div class="stars">★★★★★</div>
+        <p>"From my experience over the past three years, Jordon has provided professional and proficient IT services. He gives great value for his fees and I have confidently referred others to him for his service."</p>
+        <strong>– Michele D.</strong>
+      </div>
+      <!-- Judy -->
+      <div class="testimonial-box" data-icon="https://cdn-icons-png.flaticon.com/512/2922/2922688.png">
+        <img src="" alt="Avatar of Judy" width="60" height="60" loading="lazy" style="border-radius:50%;margin-bottom:1rem">
+        <div class="stars">★★★★★</div>
+        <p>"Jordon has been an excellent and affordable source of help with our home computer and video game systems! Pinnacle is our family's IT &quot;go to&quot;!"</p>
+        <strong>– Judy</strong>
+      </div>
 
- <div class="testimonial-box" data-icon="https://cdn-icons-png.flaticon.com/512/2922/2922565.png">
-  <img src="" alt="Avatar of Kathy C." style="width: 40px; border-radius: 50%; margin-bottom: 0.5rem;">
-  <div class="stars" style="color: gold;">★★★★★</div>
-  <p>"Maryland Roofing Exteriors couldn't be more grateful for Jordon's expertise! From programming to business cards and forms, he handled all our computer needs flawlessly."</p>
-  <strong>– Kathy C., Maryland Roofing Exteriors</strong>
-</div>
+      <div class="testimonial-controls">
+        <button onclick="prevTestimonial()" aria-label="Previous testimonial">Prev</button>
+        <button onclick="nextTestimonial()" aria-label="Next testimonial">Next</button>
+      </div>
+    </div>
+  </section>
 
+  <section id="contact" data-animate>
+    <h2 class="section-title" style="text-align:center">Contact Us</h2>
+    <div class="contact-flex">
+      <form class="contact-form" action="https://formspree.io/f/xldlvvye" method="POST" autocomplete="on">
+        <!-- Formspree helpers -->
+        <input type="hidden" name="_subject" value="New message from Pinnacle IT Solutions">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px">
 
+        <label for="name">Name</label>
+        <input id="name" name="name" autocomplete="name" required>
 
-    <div class="testimonial-box" data-gender="male" data-icon="https://cdn-icons-png.flaticon.com/512/219/219970.png">
-      <img src="" alt="Avatar of Tahji M." style="width: 40px; border-radius: 50%; margin-bottom: 0.5rem;">
-      <div class="stars">★★★★★</div>
-      <p>"I've used Pinnacle a few times now and the service has been great! Jordon has helped with gaming PC upgrades and cleaning out my Playstation a number of times. They're quick and it's a more personal experience!"</p>
-      <strong>– Tahji M.</strong>
+        <label for="email">Email</label>
+        <input id="email" name="Email" type="email" inputmode="email" autocomplete="email" required>
+
+        <label for="subject">Subject</label>
+        <input id="subject" name="subject" autocomplete="on" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" autocomplete="on" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps?q=Baltimore,+MD&output=embed"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+      </div>
     </div>
 
-    <div class="testimonial-box" data-gender="female" data-icon="https://cdn-icons-png.flaticon.com/512/2922/2922510.png">
-      <img src="" alt="Avatar of Michele D." style="width: 40px; border-radius: 50%; margin-bottom: 0.5rem;">
-      <div class="stars">★★★★★</div>
-      <p>"From my experience over the past three years, Jordon has provided professional and proficient IT services. He gives great value for his fees and I have confidently referred others to him for his service."</p>
-      <strong>– Michele D.</strong>
+    <div style="text-align:center;margin-top:2rem">
+      <div style="display:inline-block;max-width:700px;background:#1a2b32;padding:2.5rem;border-radius:12px;font-size:1.2rem;color:#ccc">
+        <p style="font-size:1.5rem;color:#fff;font-weight:700;margin-bottom:1rem">Business Hours</p>
+        <p>Mon–Fri: 9:00 AM – 6:00 PM</p>
+        <p>Sat: 10:00 AM – 4:00 PM</p>
+        <p>Sun: Closed</p>
+      </div>
     </div>
+  </section>
 
-    <div class="testimonial-box" data-gender="female" data-icon="https://cdn-icons-png.flaticon.com/512/2922/2922688.png">
-      <img src="" alt="Avatar of Judy" style="width: 40px; border-radius: 50%; margin-bottom: 0.5rem;">
-      <div class="stars">★★★★★</div>
-      <p>"Jordon has been an excellent and affordable source of help with our home computer and video game systems! Pinnacle is our family's IT &quot;go to&quot;!"</p>
-      <strong>– Judy</strong>
+  <footer>
+    <div style="margin-bottom:1rem">
+      <a href="https://www.instagram.com/pinnacleitsolutions/?hl=en" target="_blank" rel="noopener noreferrer" style="margin:0 10px;color:#fff;font-size:1.5rem"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/profile.php?id=100092747314788&mibextid=wwXIfr&rdid=vyfKx8sr8rENJDYe&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F14KeP9WjEd1%2F%3Fmibextid%3DwwXIfr" target="_blank" rel="noopener noreferrer" style="margin:0 10px;color:#fff;font-size:1.5rem"><i class="fab fa-facebook-f"></i></a>
     </div>
-
-  </div>
-
-  <div class="testimonial-controls">
-    <button onclick="prevTestimonial()">Prev</button>
-    <button onclick="nextTestimonial()">Next</button>
-  </div>
-</section>
-
-<script>
-  document.querySelectorAll("#testimonial-container .testimonial-box").forEach(box => {
-    const img = box.querySelector("img");
-    img.src = box.getAttribute("data-icon");
-  });
-</script>
-
-      
-    <section id="contact" data-animate style="padding:3rem 1rem; background:#0f1c23; color:#fff;">
-  <h2 class="section-title" style="text-align:center;">Contact Us</h2>
-
-  <div style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center; align-items:stretch; margin-top:2rem;">
-    <form action="https://formspree.io/f/xldlvvye" method="POST" style="flex:1 1 420px; max-width:520px; background:#1a2b32; padding:2rem; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,.2); display:flex; flex-direction:column; gap:1.25rem;">
-      <label for="name" style="font-size:1rem;">Name</label>
-      <input type="text" id="name" name="name" required style="width:100%; padding:.85rem; border:none; border-radius:6px; background:#0f1c23; color:#fff; font-size:1rem;">
-
-      <label for="email" style="font-size:1rem;">Email</label>
-      <input type="email" id="email" name="Email" required style="width:100%; padding:.85rem; border:none; border-radius:6px; background:#0f1c23; color:#fff; font-size:1rem;">
-
-      <label for="subject" style="font-size:1rem;">Subject</label>
-      <input type="text" id="subject" name="subject" required style="width:100%; padding:.85rem; border:none; border-radius:6px; background:#0f1c23; color:#fff; font-size:1rem;">
-
-      <label for="message" style="font-size:1rem;">Message</label>
-      <textarea id="message" name="message" rows="5" required style="width:100%; padding:.85rem; border:none; border-radius:6px; background:#0f1c23; color:#fff; font-size:1rem; resize:vertical;"></textarea>
-
-      <button type="submit" style="background:#3db2c7; color:#fff; padding:.85rem; font-size:1rem; border:none; border-radius:6px; font-weight:600; cursor:pointer;">Send Message</button>
-    </form>
-
-    <div style="flex:1 1 520px; max-width:620px;">
-      <iframe
-        src="https://www.google.com/maps?q=Baltimore,+MD&output=embed"
-        width="100%"
-        height="100%"
-        style="border:0; border-radius:12px; min-height:520px;"
-        allowfullscreen
-        loading="lazy">
-      </iframe>
+    <div style="margin-bottom:.5rem">
+      <a href="tel:+14437680557" style="color:#fff;text-decoration:none">(443) 768-0557</a> •
+      <a href="mailto:info@pinnacleitsolutions.com" style="color:#fff;text-decoration:none">info@pinnacleitsolutions.com</a>
     </div>
-  </div>
+    &copy; 2025 Pinnacle IT Solutions
+  </footer>
 
-  <div style="text-align:center; margin-top:2rem;">
-    <div style="display:inline-block; max-width:700px; background:#1a2b32; padding:2.5rem; border-radius:12px; font-size:1.3rem; color:#ccc;">
-      <p style="font-size:1.6rem; color:#fff; font-weight:700; margin-bottom:1rem;">Business Hours</p>
-      <p>Mon–Fri: 9:00 AM – 6:00 PM</p>
-      <p>Sat: 10:00 AM – 4:00 PM</p>
-      <p>Sun: Closed</p>
-    </div>
-  </div>
-</section>
-
-
-  <script>
-    // Burger menu toggle
-    function toggleMenu() {
-      const navLinks = document.querySelector('nav ul');
-      navLinks.classList.toggle('active');
-    }
-
-    // Scroll animation
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
-
-    // Typing animation
-    const phrases = ["Your Local Partner in Reliable IT Solutions."];
-    let i = 0, j = 0, isDeleting = false;
-    const typingElement = document.getElementById("typing");
-
-    function type() {
-      const currentPhrase = phrases[i];
-      typingElement.innerHTML = currentPhrase.substring(0, j) + '<span class="typing"></span>';
-
-      if (!isDeleting && j < currentPhrase.length) {
-        j++;
-        setTimeout(type, 75);
-      } else if (isDeleting && j > 0) {
-        j--;
-        setTimeout(type, 50);
-      } else {
-        isDeleting = !isDeleting;
-        setTimeout(type, isDeleting ? 2000 : 500);
-      }
-    }
-
-    if (typingElement) type();
-
-    // Testimonial carousel
-    let currentTestimonial = 0;
-    const testimonials = document.querySelectorAll('.testimonial-box');
-
-    function showTestimonial(index) {
-      testimonials.forEach((t, i) => {
-        t.classList.toggle('active', i === index);
-      });
-    }
-
-    function nextTestimonial() {
-      currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-      showTestimonial(currentTestimonial);
-    }
-
-    function prevTestimonial() {
-      currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
-      showTestimonial(currentTestimonial);
-    }
+  <!-- JSON-LD (update URL when you have it) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"LocalBusiness",
+    "name":"Pinnacle IT Solutions",
+    "url":"https://your-domain.com/",
+    "telephone":"+1-443-768-0557",
+    "email":"info@pinnacleitsolutions.com",
+    "address":{"@type":"PostalAddress","addressLocality":"Baltimore","addressRegion":"MD","addressCountry":"US"},
+    "areaServed":"Baltimore, MD",
+    "openingHours":["Mo-Fr 09:00-18:00","Sa 10:00-16:00"],
+    "sameAs":["https://www.instagram.com/pinnacleitsolutions/","https://www.facebook.com/profile.php?id=100092747314788"]
+  }
   </script>
 
-<footer>
-    <div style="margin-bottom: 1rem;">
-      <a href="https://www.instagram.com/pinnacleitsolutions/?hl=en" target="blank" style="margin: 0 10px; color: #fff; font-size: 1.5rem;">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="https://www.facebook.com/profile.php?id=100092747314788&mibextid=wwXIfr&rdid=vyfKx8sr8rENJDYe&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F14KeP9WjEd1%2F%3Fmibextid%3DwwXIfr" target="_blank" style="margin: 0 10px; color: #fff; font-size: 1.5rem;">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-    </div>
-    &copy; 2025 Pinnacle IT Solutions | (443) 768-0557 | info@pinnacleitsolutions.com
-  </footer>
-  
+  <script>
+    // Mobile menu toggle + ARIA
+    function toggleMenu(){
+      const ul = document.getElementById('primary-nav');
+      const btn = document.querySelector('.burger');
+      const open = ul.classList.toggle('active');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+
+    // Close mobile menu when a link is clicked
+    document.querySelectorAll('nav ul a').forEach(a=>{
+      a.addEventListener('click',()=>{
+        const ul = document.getElementById('primary-nav');
+        const btn = document.querySelector('.burger');
+        if(ul.classList.contains('active')){
+          ul.classList.remove('active');
+          btn.setAttribute('aria-expanded','false');
+        }
+      });
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){ entry.target.classList.add('visible'); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('[data-animate]').forEach(el=>observer.observe(el));
+
+    // Typing animation
+    const phrases=["Your Local Partner in Reliable IT Solutions."];
+    let i=0,j=0,isDeleting=false;
+    const typingElement=document.getElementById("typing");
+    function type(){
+      const s=phrases[i];
+      if(typingElement){
+        typingElement.innerHTML=s.substring(0,j)+'<span class="typing"></span>';
+      }
+      if(!isDeleting&&j<s.length){ j++; setTimeout(type,75); }
+      else if(isDeleting&&j>0){ j--; setTimeout(type,50); }
+      else { isDeleting=!isDeleting; setTimeout(type,isDeleting?2000:500); }
+    }
+    if(typingElement) type();
+
+    // Testimonial avatars
+    document.querySelectorAll("#testimonial-container .testimonial-box").forEach(box=>{
+      const img=box.querySelector("img");
+      const src=box.getAttribute("data-icon");
+      if(img && src) img.src=src;
+    });
+
+    // Testimonial carousel + auto-rotate (pause on hover)
+    let currentTestimonial=0;
+    const testimonials=[...document.querySelectorAll('#testimonial-container .testimonial-box')];
+    function showTestimonial(index){
+      testimonials.forEach((t,i)=>t.classList.toggle('active',i===index));
+    }
+    function nextTestimonial(){ currentTestimonial=(currentTestimonial+1)%testimonials.length; showTestimonial(currentTestimonial); }
+    function prevTestimonial(){ currentTestimonial=(currentTestimonial-1+testimonials.length)%testimonials.length; showTestimonial(currentTestimonial); }
+    window.nextTestimonial=nextTestimonial; window.prevTestimonial=prevTestimonial;
+
+    let rotator;
+    function startRotate(){ rotator=setInterval(nextTestimonial,6000); }
+    function stopRotate(){ clearInterval(rotator); }
+    const tc=document.getElementById('testimonial-container');
+    if(tc){ tc.addEventListener('mouseenter', stopRotate); tc.addEventListener('mouseleave', startRotate); startRotate(); }
+
+    // Shrink + hide-on-scroll nav (don't hide if mobile menu open)
+    (function(){
+      const nav=document.querySelector('nav');
+      const menu=document.getElementById('primary-nav');
+      let lastY=window.scrollY;
+      const SHRINK_AT=60, HIDE_AT=120;
+      window.addEventListener('scroll',()=>{
+        const y=window.scrollY;
+        if(y>SHRINK_AT) nav.classList.add('shrink'); else nav.classList.remove('shrink');
+        const down = y>lastY;
+        const menuOpen = menu && menu.classList.contains('active');
+        if(y>HIDE_AT && down && !menuOpen){ nav.classList.add('hide'); } else { nav.classList.remove('hide'); }
+        lastY=y;
+      });
+    })();
+  </script>
 </body>
 </html>
